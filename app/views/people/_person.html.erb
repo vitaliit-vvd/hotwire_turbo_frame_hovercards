@@ -1,32 +1,30 @@
 <div id="<%= dom_id person %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">First name:</strong>
+  <!--hover to load turbo frame-->
+  <div class="hoverWrapper">
     <%= person.first_name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Last name:</strong>
     <%= person.last_name %>
-  </p>
+    <br>
+    <span role="button" aria-describedby="<%= dom_id(person, :hovercard) %>">
+      Details...
+    </span>
+    <div id="hoverContent">
+      <%= turbo_frame_tag dom_id(person, :hovercard), target: "_top", role: "tooltip", src: hovercard_person_path(person), loading: :lazy do %>
+        Loading...
+      <% end %>
+    </div>
+  </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Address:</strong>
-    <%= person.address %>
-  </p>
+  <!--click to load turbo frame-->
+<!--  <details>-->
+<!--    <summary>-->
+<!--      <strong class="block font-medium mb-1">First name:</strong>-->
+      <%#= person.first_name %>
+<!--      <strong class="block font-medium mb-1">Last name:</strong>-->
+      <%#= person.last_name %>
+<!--    </summary>-->
+    <%#= turbo_frame_tag dom_id(person, :thumbnail), target: "_top", loading: :lazy, src: hovercard_person_path(person) do %>
+<!--      Loading...-->
+    <%# end %>
+<!--  </details>-->
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Phone:</strong>
-    <%= person.phone %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Date of birth:</strong>
-    <%= person.date_of_birth.strftime("%d/%b/%Y") %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this person", person, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this person", edit_person_path(person), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
 </div>

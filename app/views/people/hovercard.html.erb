@@ -1,0 +1,37 @@
+<%= turbo_frame_tag dom_id(@person, :thumbnail) do %>
+    <p>
+      <strong>Address:</strong>
+      <%= @person.address %>
+    </p>
+
+    <p>
+      <strong>Phone:</strong>
+      <%= @person.phone %>
+    </p>
+
+    <p>
+      <strong>Date of birth:</strong>
+      <%= @person.date_of_birth.strftime("%d/%b/%Y") %>
+    </p>
+
+    <%= link_to "Show this person", @person, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+<% end %>
+
+<%= turbo_frame_tag dom_id(@person, :hovercard), target: "_top" do %>
+  <%= link_to "Show this person", @person, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+  <p>
+    <strong>Address:</strong>
+    <%= @person.address %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= @person.phone %>
+  </p>
+
+  <p>
+    <strong>Date of birth:</strong>
+    <%= @person.date_of_birth.strftime("%d/%b/%Y") %>
+  </p>
+<% end %>

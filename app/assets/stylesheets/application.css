@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+.hoverWrapper #hoverContent {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: lightskyblue;
+    color: black;
+}
+
+.hoverWrapper:hover #hoverContent {
+    display: block;
+}
